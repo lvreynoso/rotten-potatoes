@@ -1,0 +1,24 @@
+{
+  "name": "rotten-potatoes",
+  "version": "1.0.0",
+  "description": "BEW 1.1 assignment #2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lvreynoso/rotten-potatoes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lvreynoso/rotten-potatoes/issues"
+  },
+  "homepage": "https://github.com/lvreynoso/rotten-potatoes#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "nodemon": "^1.18.4"
+  }
+}
