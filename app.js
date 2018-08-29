@@ -7,7 +7,8 @@ app.set('view engine', 'handlebars');
 
 let reviews = [
   { title: "Great Review" },
-  { title: "Next Review" }
+  { title: "Next Review" },
+  { title: "The Prestige"}
 ]
 
 /*
