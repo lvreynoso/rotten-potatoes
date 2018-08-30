@@ -1,31 +1,32 @@
 <fieldset>
   <legend>Edit Review</legend>
   <!-- TITLE -->
-  <p>
+<div class="form-group">
     <label for="review-title">Title</label><br>
     <input id="review-title" type="text" name="title" value="{{review.title}}"/>
-  </p>
+</div>
 
   <!-- MOVIE TITLE -->
-  <p>
-    <label for="movie-title">Movie Title</label><br>
-    <input id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
-  </p>
+  <div class="form-group">
+        <label for="movie-title">Movie Title</label><br>
+        <input id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
+  </div>
 
   <!-- DESCRIPTION -->
-  <p>
-    <label for="review-description">Description</label><br>
-    <textarea id="review-description" name="description" rows="10" />{{review.description}}</textarea>
-  </p>
-<!-- Rating -->
-<p>
-    <label for="rating-text">Rating</label></br>
-    <select>
-        <option value=1>&#9733;</option>
-        <option value=2>&#9733;&#9733;</option>
-        <option value=3>&#9733;&#9733;&#9733;</option>
-        <option value=4>&#9733;&#9733;&#9733;&#9733;</option>
-        <option value=5>&#9733;&#9733;&#9733;&#9733;&#9733;</option>
-    </select>
-</p>
+    <div class="form-group">
+        <label for="review-description">Description</label><br>
+        <textarea id="review-description" name="description" rows="10" />{{review.description}}</textarea>
+    </div>
+
+  <!-- Rating -->
+    <div class="form-group">
+        <label for="rating-text">Rating</label></br>
+        <select>
+            <option value=1>&#9733;</option>
+            <option value=2>&#9733;&#9733;</option>
+            <option value=3>&#9733;&#9733;&#9733;</option>
+            <option value=4>&#9733;&#9733;&#9733;&#9733;</option>
+            <option value=5>&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+        </select>
+    </div>
 </fieldset>

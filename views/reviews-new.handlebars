@@ -1,13 +1,15 @@
-<form method="POST" action="/reviews">
-  {{> reviews-form}}
-  <!-- BUTTON -->
-  <p>
-    <button type="submit">Save Review</button>
-  </p>
-
-</form>
-<form method="GET" action="/">
-    <p>
-      <button type="cancel">Cancel</button>
-    </p>
-</form>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+    <form action="/reviews" method="post">
+        {{> reviews-form}}
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Save Review</button>
+        </div>
+    </form>
+    <form class="" action="/" method="get">
+        <div class="form-group">
+            <button class="btn btn-primary" type="cancel" name="button">Cancel</button>
+        </div>
+    </form>
+    </div>
+</div>
