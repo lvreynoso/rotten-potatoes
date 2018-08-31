@@ -1,5 +1,6 @@
 // 熊貓尿 ES6 module incompatibility
 const reviews = require('./controllers/reviews.js')
+const comments = require('./controllers/comments.js')
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
 
 reviews(app);
+comments(app);
 
 app.listen(3000, () => {
   console.log('App listening on port 3000!')
