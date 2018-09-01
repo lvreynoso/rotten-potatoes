@@ -1,0 +1,9 @@
+<h1>Now Playing</h1>
+<div class="row">
+    {{#each movies}}
+      <div class="col-sm-3">
+          <li>{{this.title}}</li>
+          <li> <img src="https://api.themoviedb.org/3/movie/{{this.poster_path}}" alt="{{this.title}}"> </li>
+      </div>
+    {{/each}}
+</div>

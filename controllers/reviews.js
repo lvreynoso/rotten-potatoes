@@ -2,6 +2,7 @@ const Review = require('../models/review.js');
 const Comment = require('../models/comment.js');
 
 function reviews(app) {
+    /*
     app.get('/', (req, res) => {
       Review.find()
         .then(reviews => {
@@ -11,6 +12,7 @@ function reviews(app) {
             console.log(err);
         })
     });
+    */
 
     app.get('/reviews/new', (req, res) => {
         res.render('reviews-new', {});
