@@ -2,8 +2,14 @@
 <div class="row">
     {{#each movies}}
       <div class="col-sm-3">
-          <li>{{this.title}}</li>
-          <li> <img src="https://api.themoviedb.org/3/movie/{{this.poster_path}}" alt="{{this.title}}"> </li>
+          <h3>{{this.title}}</h3>
+          {{#each this.genre_names}}
+          <p>{{this}}</p>
+          {{/each}}
+          <!-- for some reason {{baseUrl}} does not work here, so I manually inserted the url -->
+          <p><a href="/movies/{{this.id}}">
+              <img src="{{this.baseUrl}}w92{{this.poster_path}}" alt="{{this.title}}">
+          </a></p>
       </div>
     {{/each}}
 </div>
