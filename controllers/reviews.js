@@ -1,5 +1,7 @@
 const Review = require('../models/review.js');
 const Comment = require('../models/comment.js');
+const MovieDb = require('moviedb-promise')
+const moviedb = new MovieDb('28721379fb90bd78a4d224a9cb6ddbcc')
 
 function reviews(app) {
     /*
@@ -37,30 +39,50 @@ function reviews(app) {
       })
     });
 
-    app.get('/reviews/:id/edit', (req, res) => {
+    app.get('/movies/:movieId/reviews/:id/edit', (req, res) => {
         Review.findById(req.params.id, function(err, review) {
             res.render('reviews-edit', {review: review})
         })
     });
 
-    app.delete('/reviews/:id', function (req, res) {
+    app.delete('/movies/:movieId/reviews/:id', function (req, res) {
         console.log("Delete review")
         Review.findByIdAndRemove(req.params.id).then((review) => {
-            res.redirect('/')
+            res.redirect(`/movies/${req.params.movieId}`)
         }).catch((err) => {
             console.log(err.message)
         })
     })
 
     // "Update" route
-    app.put('/reviews/:id', (req, res) => {
+    app.put('/movies/:movieId/reviews/:id', (req, res) => {
         Review.findByIdAndUpdate(req.params.id, req.body)
             .then(review => {
-                res.redirect(`/reviews/${review._id}`)
+                res.redirect(`/movies/${req.params.movieId}`)
             }).catch(err => {
                 console.log(err.message)
             })
     });
+
+    /*
+     *  Part Deux review logic below
+     */
+
+    app.get('/movies/:movieId/reviews/new', (req, res) => {
+        moviedb.movieInfo({ id: req.params.movieId }).then(movie => {
+            res.render('reviews-new', { movieId: req.params.movieId, movie: movie })
+        }).catch(err => {
+            console.log(err.message);
+        })
+    })
+
+    app.post('/movies/:movieId/reviews', (req, res) => {
+        Review.create(req.body).then((review) => {
+            res.redirect(`/movies/${req.params.movieId}`);
+        }).catch((err) => {
+            console.log(err.message);
+        })
+    })
 
 }
 

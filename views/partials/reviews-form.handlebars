@@ -6,12 +6,6 @@
     <input id="review-title" type="text" name="title" value="{{review.title}}"/>
 </div>
 
-  <!-- MOVIE TITLE -->
-  <div class="form-group">
-        <label for="movie-title">Movie Title</label><br>
-        <input id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
-  </div>
-
   <!-- DESCRIPTION -->
     <div class="form-group">
         <label for="review-description">Description</label><br>
@@ -20,13 +14,13 @@
 
   <!-- Rating -->
     <div class="form-group">
-        <label for="rating-text">Rating</label></br>
-        <select class="selectpicker" data-style="btn-info" name="select-picker">
-            <option id="one-star" name="rating" type="text" value="{{review.rating}}">&#9733;</option>
-            <option id="two-stars" name="rating" type="text" value="{{review.rating}}">&#9733;&#9733;</option>
-            <option id="three-stars" name="rating" type="text" value="{{review.rating}}">&#9733;&#9733;&#9733;</option>
-            <option id="four-stars" name="rating" type="text" value="{{review.rating}}">&#9733;&#9733;&#9733;&#9733;</option>
-            <option id="five-stars" name="rating" type="text" value="{{review.rating}}">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+        <label for="rating-stars">Rating</label></br>
+        <select class="form-group" data-style="btn-info" name="rating">
+            <option id="rating-stars" type="text" value="&#9733;">&#9733;</option>
+            <option id="rating-stars" type="text" value="&#9733;&#9733;">&#9733;&#9733;</option>
+            <option id="rating-stars" type="text" value="&#9733;&#9733;&#9733;">&#9733;&#9733;&#9733;</option>
+            <option id="rating-stars" type="text" value="&#9733;&#9733;&#9733;&#9733;">&#9733;&#9733;&#9733;&#9733;</option>
+            <option id="rating-stars" type="text" value="&#9733;&#9733;&#9733;&#9733;&#9733;">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
         </select>
     </div>
 </fieldset>

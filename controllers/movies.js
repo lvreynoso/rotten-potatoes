@@ -1,5 +1,6 @@
 const MovieDb = require('moviedb-promise')
 const moviedb = new MovieDb('28721379fb90bd78a4d224a9cb6ddbcc')
+const Review = require('../models/review.js');
 
 
 function movies(app) {
@@ -44,7 +45,9 @@ function movies(app) {
             }
 
             function renderTemplate(movie)  {
-                res.render('movies-show', { movie: movie });
+                Review.find({ movieId: req.params.id}).then(reviews => {
+                    res.render('movies-show', { movie: movie, reviews: reviews });
+                })
             }
 
         }).catch(console.error)
