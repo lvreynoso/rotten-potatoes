@@ -16,6 +16,8 @@ function reviews(app) {
     });
     */
 
+    // old code from part une
+    /*
     app.get('/reviews/new', (req, res) => {
         res.render('reviews-new', {});
     });
@@ -38,6 +40,7 @@ function reviews(app) {
           console.log(err.message);
       })
     });
+    */
 
     app.get('/movies/:movieId/reviews/:id/edit', (req, res) => {
         Review.findById(req.params.id, function(err, review) {
@@ -65,7 +68,7 @@ function reviews(app) {
     });
 
     /*
-     *  Part Deux review logic below
+     *  Part Deux only logic below
      */
 
     app.get('/movies/:movieId/reviews/new', (req, res) => {
