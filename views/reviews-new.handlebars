@@ -5,11 +5,12 @@
     <form action="/movies/{{movieId}}/reviews" method="post">
         {{> reviews-form}}
         <input type="hidden" name="movieId" value="{{movieId}}">
+        <input type="hidden" name="movieTitle" value="{{movie.title}}">
         <div class="form-group">
             <button class="btn btn-primary" type="submit">Save Review</button>
         </div>
     </form>
-    <form class="" action="/" method="get">
+    <form class="" action="/movies/{{movieId}}" method="get">
         <div class="form-group">
             <button class="btn btn-primary" type="cancel" name="button">Cancel</button>
         </div>
