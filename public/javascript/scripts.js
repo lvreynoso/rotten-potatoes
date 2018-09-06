@@ -7,6 +7,7 @@ let movieId = currentPath[2];
 let reviewId = currentPath[4];
 
 window.onload = function() {
+    addDeleteLogic();
     // listen for a form submit event
     document.getElementById("newComment").addEventListener("submit", e => {
         // prevent the default form behavior
@@ -24,19 +25,18 @@ window.onload = function() {
                 // display the data as a new comment on the page
                 $(document.getElementById("comments")).prepend(
                     `
-                        <div class="card">
+                        <div class="card" id="${response.data.comment._id}">
                             <div class="card-block">
                                 <h4 class="card-title">${response.data.comment.title}</h4>
                                 <p class="card-text">${response.data.comment.content}</p>
                                 <p>
-                                <form method="POST" action="/reviews/comments/${response._id}?_method=DELETE">
-                                    <button class="btn btn-link" type="submit">Delete</button>
-                                    </form>
+                                <button class="btn btn-link" id="deleteComment" data-comment-id=${response.data.comment._id}>Delete</button>
                                 </p>
                             </div>
                         </div>
                     `
                 );
+                addDeleteLogic();
             })
             .catch(function(error) {
                 console.log(error);
@@ -44,5 +44,20 @@ window.onload = function() {
                 alert('There was a problem saving your comment. Please try again.')
             });
     });
+}
 
+function addDeleteLogic() {
+    document.getElementById('deleteComment').addEventListener('click', (e) => {
+        console.log("click!")
+        let commentId = document.getElementById('deleteComment').getAttribute('data-comment-id');
+        axios.delete(`/movies/${movieId}/reviews/${reviewId}/comments/${commentId}`)
+            .then(response => {
+                console.log(response)
+                comment = document.getElementById(commentId)
+                comment.parentNode.removeChild(comment); // OR comment.style.display = 'none';
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    })
 }

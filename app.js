@@ -8,9 +8,13 @@ const bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main'
+}));
 app.set('view engine', 'handlebars');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'))
 app.use(express.static('public'))
@@ -20,5 +24,5 @@ comments(app);
 movies(app);
 
 app.listen(3000, () => {
-  console.log('App listening on port 3000!')
+    console.log('App listening on port 3000!')
 })

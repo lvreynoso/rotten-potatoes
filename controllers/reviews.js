@@ -34,7 +34,9 @@ function reviews(app) {
 
     app.get('/movies/:movieId/reviews/:id/edit', (req, res) => {
         Review.findById(req.params.id, (err, review) => {
-            res.render('reviews-edit', {review: review})
+            res.render('reviews-edit', {
+                review: review
+            })
         })
     });
 
@@ -61,8 +63,13 @@ function reviews(app) {
      */
 
     app.get('/movies/:movieId/reviews/new', (req, res) => {
-        moviedb.movieInfo({ id: req.params.movieId }).then(movie => {
-            res.render('reviews-new', { movieId: req.params.movieId, movie: movie })
+        moviedb.movieInfo({
+            id: req.params.movieId
+        }).then(movie => {
+            res.render('reviews-new', {
+                movieId: req.params.movieId,
+                movie: movie
+            })
         }).catch(err => {
             console.log(err.message);
         })
@@ -77,15 +84,23 @@ function reviews(app) {
     })
 
     app.get('/movies/:movieId/reviews/:id', (req, res) => {
-      Review.findById(req.params.id).then((review) => {
-          moviedb.movieInfo({ id: req.params.movieId}).then(movie => {
-              Comment.find({ reviewId: req.params.id }).then(comments => {
-              res.render('reviews-show', {review: review, comments: comments, movie: movie})
-          })
+        Review.findById(req.params.id).then((review) => {
+            moviedb.movieInfo({
+                id: req.params.movieId
+            }).then(movie => {
+                Comment.find({
+                    reviewId: req.params.id
+                }).then(comments => {
+                    res.render('reviews-show', {
+                        review: review,
+                        comments: comments,
+                        movie: movie
+                    })
+                })
+            })
+        }).catch((err) => {
+            console.log(err.message);
         })
-      }).catch((err) => {
-          console.log(err.message);
-      })
     });
 
 }
