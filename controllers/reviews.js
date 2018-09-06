@@ -33,12 +33,12 @@ function reviews(app) {
     */
 
     app.get('/movies/:movieId/reviews/:id/edit', (req, res) => {
-        Review.findById(req.params.id, function(err, review) {
+        Review.findById(req.params.id, (err, review) => {
             res.render('reviews-edit', {review: review})
         })
     });
 
-    app.delete('/movies/:movieId/reviews/:id', function (req, res) {
+    app.delete('/movies/:movieId/reviews/:id', (req, res) => {
         Review.findByIdAndRemove(req.params.id).then((review) => {
             res.redirect(`/movies/${req.params.movieId}`)
         }).catch((err) => {

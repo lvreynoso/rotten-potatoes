@@ -10,7 +10,7 @@ function comments(app) {
         })
     })
 
-    app.delete('/movies/:movieId/reviews/:id/comments/:id', function (req, res) {
+    app.delete('/movies/:movieId/reviews/:id/comments/:id', (req, res) => {
         console.log("Delete Comment")
         Comment.findByIdAndRemove(req.params.id).then((comment) => {
             res.redirect(`/reviews/${comment.reviewId}`);
