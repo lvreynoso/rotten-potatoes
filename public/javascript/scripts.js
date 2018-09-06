@@ -7,7 +7,6 @@ let movieId = currentPath[2];
 let reviewId = currentPath[4];
 
 window.onload = function() {
-    addDeleteLogic();
     // listen for a form submit event
     document.getElementById("newComment").addEventListener("submit", e => {
         // prevent the default form behavior
@@ -44,6 +43,8 @@ window.onload = function() {
                 alert('There was a problem saving your comment. Please try again.')
             });
     });
+
+    addDeleteLogic();
 }
 
 function addDeleteLogic() {
