@@ -1,9 +1,17 @@
 const Comment = require('../models/comment.js')
 
 function comments(app) {
-    //new comment
+    // new comment
     app.post('/movies/:movieId/reviews/:id/comments', (req, res) => {
-        Comment.create(req.body).then(comment => {
+        console.log(req.body);
+        // let's build our own jQuery JSON parser because why the fuck not
+        let submittedData = req.body;
+        let parsedData = {};
+        for (var i = 0; i < submittedData.length; i++) {
+            parsedData[submittedData[i]['name']] = submittedData[i]['value'];
+        }
+        console.log(parsedData);
+        Comment.create(parsedData).then(comment => {
             res.status(200).send({ comment: comment})
         }).catch((err) => {
             res.status(400).send({ err: err})
