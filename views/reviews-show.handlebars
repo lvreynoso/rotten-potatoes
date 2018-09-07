@@ -1,23 +1,26 @@
-
-<a href="/">Back to Home</a>
+<a href="/movies/{{review.movieId}}">Back to {{review.movieTitle}}</a>
+<p><a href="/movies/{{review.movieId}}"><img src="https://image.tmdb.org/t/p/w92{{movie.poster_path}}" alt="{{movie.title}}"></a></p>
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
         <h1>{{review.title}}</h1>
-        <h5>{{review.movieTitle}}</h5>
+        <h5>Reviewing <em>{{review.movieTitle}}</em></h5>
         <p>{{review.description}}</p>
         <p>{{review.rating}}</p>
 
-        <p><a href="/reviews/{{review._id}}/edit">Edit</a></p>
-        <p><form method="POST" action="/reviews/{{review._id}}?_method=DELETE">
-            <button type="submit">Delete</button>
-        </form></p>
+        <p><a href="/movies/{{review.movieId}}/reviews/{{review._id}}/edit">Edit</a></p>
+        <p>
+            <form method="POST" action="/movies/{{review.movieId}}/reviews/{{review._id}}?_method=DELETE">
+                <button type="submit">Delete</button>
+            </form>
+        </p>
         <hr>
 
-    <!-- Comment form -->
-    {{> comment-form}}
-    <hr>
-    {{#each comments}}
-      {{> comment}}
-    {{/each}}
+        <!-- Comment form -->
+        {{> comment-form}}
+        <div id="comments">
+            {{#each comments}}
+                {{> comment}}
+            {{/each}}
+        </div>
     </div>
 </div>
