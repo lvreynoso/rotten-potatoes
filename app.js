@@ -23,6 +23,8 @@ reviews(app);
 comments(app);
 movies(app);
 
-app.listen(3000, () => {
+var server = app.listen(3000, () => {
     console.log('App listening on port 3000!')
 })
+
+module.exports = server;
