@@ -2,6 +2,7 @@
 const reviews = require('./controllers/reviews.js');
 const comments = require('./controllers/comments.js');
 const movies = require('./controllers/movies.js');
+const admin = require('./controllers/admin.js');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -22,6 +23,7 @@ app.use(express.static('public'))
 reviews(app);
 comments(app);
 movies(app);
+admin(app);
 
 var server = app.listen(3000, () => {
     console.log('App listening on port 3000!')

@@ -1,0 +1,24 @@
+<!-- admin.handlebars -->
+
+<h2>Reviews</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">_id</th>
+      <th scope="col">movieId</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each reviews}}
+      <tr>
+        <th scope="row">{{this._id}}</th>
+        <td>{{this.movieId}}</td>
+        <td>{{this.title}}</td>
+        <td>{{this.description}}</td>
+        <td><button class="btn btn-link" id="deleteReview" data-movie-id="{{this.movieId}}" data-review-id="{{this._id}}">Delete</button></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
