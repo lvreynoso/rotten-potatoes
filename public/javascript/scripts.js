@@ -59,15 +59,11 @@ function deleteCommentLogic() {
     if (document.getElementsByClassName("deleteComment") != null) {
         for (var i = 0; i < document.getElementsByClassName("deleteComment").length; i++) {
             document.getElementsByClassName("deleteComment")[i].addEventListener('click', (e) => {
-                console.log("click!")
-                console.log(e.target.getAttribute('data-comment-id'));
                 let commentId = e.target.getAttribute('data-comment-id');
                 axios.delete(`/movies/${movieId}/reviews/${reviewId}/comments/${commentId}`)
                     .then(response => {
-                        console.log(e.target.parentNode)
-                        comment = e.target.parentNode.parentNode;
-                        console.log(comment);
-                        comment.parentNode.removeChild(comment); // OR comment.style.display = 'none';
+                        elementToErase = e.target.parentNode.parentNode;
+                        comment.parentNode.removeChild(elementToErase); // OR comment.style.display = 'none';
                     })
                     .catch(error => {
                         console.log(error)
@@ -81,12 +77,11 @@ function deleteReviewLogic() {
     if (document.getElementsByClassName('deleteReview') != null) {
         for (var i = 0; i < document.getElementsByClassName('deleteReview').length; i++) {
             document.getElementsByClassName('deleteReview')[i].addEventListener('click', (e) => {
-                console.log("click!")
                 let passedReviewId = e.target.getAttribute('data-review-id');
-                let passedMovieId = e.target.getAttribute('data-movie-id');
-                axios.delete(`/movies/${passedMovieId}/reviews/${passedReviewId}`)
+                axios.delete(`/admin/delete/${passedReviewId}`)
                     .then(response => {
-                        console.log(response)
+                        elementToErase = e.target.parentNode.parentNode;
+                        elementToErase.parentNode.removeChild(elementToErase);
                     })
                     .catch(error => {
                         console.log(error)

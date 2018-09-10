@@ -21,7 +21,6 @@ function comments(app) {
     })
 
     app.delete('/movies/:movieId/reviews/:reviewId/comments/:id', (req, res) => {
-        console.log("DELETE comment")
         Comment.findByIdAndRemove(req.params.id).then(comment => {
             res.status(200).send(comment);
         }).catch((err) => {
