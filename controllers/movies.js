@@ -24,7 +24,7 @@ function movies(app) {
                                 }
                             }
                         }
-                    } catch(err) {console.log(err.message)}
+                    } catch(err) { console.log(err.message) }
                     res.render('movies-index', { movies: movies,
                      });
                 })

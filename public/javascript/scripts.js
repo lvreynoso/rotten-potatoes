@@ -63,7 +63,7 @@ function deleteCommentLogic() {
                 axios.delete(`/movies/${movieId}/reviews/${reviewId}/comments/${commentId}`)
                     .then(response => {
                         elementToErase = e.target.parentNode.parentNode;
-                        comment.parentNode.removeChild(elementToErase); // OR comment.style.display = 'none';
+                        elementToErase.parentNode.removeChild(elementToErase); // OR comment.style.display = 'none';
                     })
                     .catch(error => {
                         console.log(error)
